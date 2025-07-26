@@ -4,6 +4,7 @@ const headerNavLinks = [
   { href: '/tags', title: 'Tags' },
   { href: '/projects', title: 'Projects' },
   { href: '/about', title: 'About' },
+  { href: '/static/DeepakBattula-resume.pdf', title: 'Resume' },
 ]
 
 export default headerNavLinks

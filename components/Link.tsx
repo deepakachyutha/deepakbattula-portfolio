@@ -4,7 +4,8 @@ import type { LinkProps } from 'next/link'
 import { AnchorHTMLAttributes } from 'react'
 
 const CustomLink = ({ href, ...rest }: LinkProps & AnchorHTMLAttributes<HTMLAnchorElement>) => {
-  const isInternalLink = href && href.startsWith('/')
+  const isInternalLink =
+    href && !href.endsWith('.pdf') && (href.startsWith('/') || href.startsWith('#'))
   const isAnchorLink = href && href.startsWith('#')
 
   if (isInternalLink) {
