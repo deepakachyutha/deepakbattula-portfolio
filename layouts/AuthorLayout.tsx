@@ -37,7 +37,6 @@ export default function AuthorLayout({ children, content }: Props) {
               <SocialIcon kind="mail" href={`mailto:${email}`} />
               <SocialIcon kind="github" href={github} />
               <SocialIcon kind="linkedin" href={linkedin} />
-              {twitter && <SocialIcon kind="twitter" href={twitter} />}
               <SocialIcon kind="bluesky" href={bluesky} />
             </div>
           </div>
