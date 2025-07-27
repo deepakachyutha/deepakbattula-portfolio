@@ -26,7 +26,7 @@ module.exports = {
         sans: ['var(--font-space-grotesk)', ...fontFamily.sans],
       },
       colors: {
-        primary: colors.slate, // Use the "slate" palette for a great gray/black theme
+        primary: colors.sky,
         gray: colors.gray,
       },
       typography: ({ theme }) => ({
