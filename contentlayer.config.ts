@@ -138,11 +138,17 @@ export const Authors = defineDocumentType(() => ({
     occupation: { type: 'string' },
     company: { type: 'string' },
     email: { type: 'string' },
-    twitter: { type: 'string' },
     bluesky: { type: 'string' },
     linkedin: { type: 'string' },
     github: { type: 'string' },
-    layout: { type: 'string' },
+    college: {
+      type: 'string', // The data type is text (a 'string')
+      required: false, // 'false' means this field is optional
+    },
+    workEmail: {
+      type: 'string',
+      required: false,
+    },
   },
   computedFields,
 }))
