@@ -4,7 +4,6 @@
 const fontFamily = require('tailwindcss/defaultTheme').fontFamily
 const colors = require('tailwindcss/colors')
 
-/** @type {import("tailwindcss/types").Config } */
 module.exports = {
   content: [
     './node_modules/pliny/**/*.js',
