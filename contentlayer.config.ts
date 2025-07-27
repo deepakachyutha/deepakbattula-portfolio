@@ -149,6 +149,7 @@ export const Authors = defineDocumentType(() => ({
       type: 'string',
       required: false,
     },
+    twitter: { type: 'string', required: false },
   },
   computedFields,
 }))
