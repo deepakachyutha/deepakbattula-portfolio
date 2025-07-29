@@ -13,7 +13,6 @@ import PostBanner from '@/layouts/PostBanner'
 import { Metadata } from 'next'
 import siteMetadata from '@/data/siteMetadata'
 import { notFound } from 'next/navigation'
-import { getAllTags } from 'pliny/utils/contentlayer'
 import { slug } from 'github-slugger'
 import Link from 'next/link'
 
@@ -85,7 +84,19 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
   const slug = decodeURI(params.slug.join('/'))
   // Filter out drafts in production
   const sortedCoreContents = allCoreContent(sortPosts(allBlogs))
-  const tags = await getAllTags(allBlogs)
+  const tags = {}
+  allBlogs.forEach((post) => {
+    if (post.tags && post.draft !== true) {
+      post.tags.forEach((tag) => {
+        const formattedTag = slug(tag)
+        if (tags[formattedTag]) {
+          tags[formattedTag] += 1
+        } else {
+          tags[formattedTag] = 1
+        }
+      })
+    }
+  })
   const postIndex = sortedCoreContents.findIndex((p) => p.slug === slug)
   if (postIndex === -1) {
     return notFound()
