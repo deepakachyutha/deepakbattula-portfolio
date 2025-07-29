@@ -15,6 +15,7 @@ import siteMetadata from '@/data/siteMetadata'
 import { notFound } from 'next/navigation'
 import { slug } from 'github-slugger'
 import Link from 'next/link'
+import { slug } from 'github-slugger'
 
 const defaultLayout = 'PostLayout'
 const layouts = {
