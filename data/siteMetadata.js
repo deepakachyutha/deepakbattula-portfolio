@@ -3,7 +3,8 @@ const siteMetadata = {
   title: "Deepak Battula's Portfolio",
   author: 'Deepak Battula',
   headerTitle: 'Deepak Battula',
-  description: 'A blog created with Next.js and Tailwind.css',
+  description:
+    'This is a Website-Portfolio of Deepak Battula, collection of my projects, blogs and ideas.',
   language: 'English, Hindi, Telugu',
   theme: 'system', // system, dark or light
   siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',

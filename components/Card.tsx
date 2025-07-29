@@ -1,4 +1,3 @@
-import Image from './Image'
 import Link from './Link'
 
 const Card = ({ title, description, imgSrc, href }) => (
@@ -8,26 +7,11 @@ const Card = ({ title, description, imgSrc, href }) => (
         imgSrc && 'h-full'
       } overflow-hidden rounded-md border-2 border-gray-200/60 dark:border-gray-700/60`}
     >
-      {imgSrc &&
-        (href ? (
-          <Link href={href} aria-label={`Link to ${title}`}>
-            <Image
-              alt={title}
-              src={imgSrc}
-              className="object-cover object-center md:h-36 lg:h-48"
-              width={544}
-              height={306}
-            />
-          </Link>
-        ) : (
-          <Image
-            alt={title}
-            src={imgSrc}
-            className="object-cover object-center md:h-36 lg:h-48"
-            width={544}
-            height={306}
-          />
-        ))}
+      {imgSrc && (
+        <div className="overflow-hidden">
+          <img alt={title} src={imgSrc} className="w-full rounded-t-md" />
+        </div>
+      )}
       <div className="p-6">
         <h2 className="mb-3 text-2xl leading-8 font-bold tracking-tight">
           {href ? (
@@ -42,10 +26,10 @@ const Card = ({ title, description, imgSrc, href }) => (
         {href && (
           <Link
             href={href}
-            className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 text-base leading-6 font-medium"
+            className="text-base leading-6 font-medium text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300"
             aria-label={`Link to ${title}`}
           >
-            Learn more &rarr;
+            View on GitHub &rarr;
           </Link>
         )}
       </div>

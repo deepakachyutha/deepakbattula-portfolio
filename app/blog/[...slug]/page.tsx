@@ -13,6 +13,9 @@ import PostBanner from '@/layouts/PostBanner'
 import { Metadata } from 'next'
 import siteMetadata from '@/data/siteMetadata'
 import { notFound } from 'next/navigation'
+import { getAllTags } from 'pliny/utils/contentlayer'
+import { slug } from 'github-slugger'
+import Link from 'next/link'
 
 const defaultLayout = 'PostLayout'
 const layouts = {
@@ -82,6 +85,7 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
   const slug = decodeURI(params.slug.join('/'))
   // Filter out drafts in production
   const sortedCoreContents = allCoreContent(sortPosts(allBlogs))
+  const tags = await getAllTags(allBlogs)
   const postIndex = sortedCoreContents.findIndex((p) => p.slug === slug)
   if (postIndex === -1) {
     return notFound()
