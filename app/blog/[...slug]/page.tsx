@@ -23,13 +23,6 @@ const layouts = {
   PostBanner,
 }
 
-type PageProps = {
-  params: {
-    slug: string[]
-  }
-}
-
-// This is the new, cleaner component signature
 export default async function Page({ params }: PageProps) {
   const slugPath = decodeURI(params.slug.join('/'))
   // Filter out drafts in production
