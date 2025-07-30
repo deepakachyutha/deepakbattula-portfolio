@@ -97,7 +97,7 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
       })
     }
   })
-  const postIndex = sortedCoreContents.findIndex((p) => p.slug === slug)
+  const postIndex = sortedCoreContents.findIndex((p) => p.slug === slugPath)
   if (postIndex === -1) {
     return notFound()
   }
