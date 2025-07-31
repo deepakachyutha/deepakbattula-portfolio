@@ -22,7 +22,6 @@ const layouts = {
   PostBanner,
 }
 
-// Metadata function (can stay as is)
 export async function generateMetadata({
   params,
 }: {
@@ -30,14 +29,14 @@ export async function generateMetadata({
 }): Promise<Metadata | undefined> {
   const slug = decodeURI(params.slug.join('/'))
   const post = allBlogs.find((p) => p.slug === slug)
+  if (!post) {
+    return
+  }
   const authorList = post?.authors || ['default']
   const authorDetails = authorList.map((author) => {
     const authorResults = allAuthors.find((p) => p.slug === author)
     return coreContent(authorResults as Authors)
   })
-  if (!post) {
-    return
-  }
 
   const publishedAt = new Date(post.date).toISOString()
   const modifiedAt = new Date(post.lastmod || post.date).toISOString()
@@ -81,7 +80,8 @@ export const generateStaticParams = async () => {
 }
 
 // Main Page Component
-export default async function Page({ params }: { params: { slug: string[] } }) {
+export default async function Page(props: { params: Promise<{ slug: string[] }> }) {
+  const params = await props.params
   const slugPath = decodeURI(params.slug.join('/'))
   const post = allBlogs.find((p) => p.slug === slugPath) as Blog
 
